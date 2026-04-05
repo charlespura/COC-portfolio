@@ -101,6 +101,28 @@ button {
   max-width: 560px;
 }
 
+.village-top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.village-top-nav__item {
+  padding: 0.72rem 0.95rem;
+  border: 2px solid rgba(255, 214, 121, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 248, 221, 0.1);
+  color: var(--text-main);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.village-top-nav__item.active {
+  background: linear-gradient(180deg, #ffe07c, #f0ac27);
+  color: #4b3105;
+}
+
 .eyebrow {
   margin: 0 0 0.25rem;
   color: var(--eyebrow-color);
@@ -222,40 +244,12 @@ button {
   box-shadow: 0 8px 18px rgba(74, 43, 8, 0.12);
 }
 
-.selection-card {
-  position: absolute;
-  left: 1.25rem;
-  bottom: 1.25rem;
-  z-index: 3;
-  width: min(360px, calc(100vw - 2rem));
-  padding: 1rem 1.1rem;
-  border: 3px solid var(--hud-border);
-  border-radius: 24px;
-  background: var(--selection-bg);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(8px);
-  transition:
-    transform 0.45s ease,
-    opacity 0.45s ease;
-}
-
 .entering-section .selection-card,
 .entering-section .scene-hint,
 .entering-section .building-legend,
 .entering-section .hero-bar {
   opacity: 0;
   transform: translateY(14px);
-}
-
-.selection-enter-button {
-  margin-top: 0.9rem;
-  padding: 0.8rem 1rem;
-  border: 0;
-  border-radius: 16px;
-  background: linear-gradient(180deg, #ffe07c, #f0ac27);
-  color: #4b3105;
-  font-weight: 900;
-  cursor: pointer;
 }
 
 .enter-overlay {
@@ -289,21 +283,6 @@ button {
 
 .enter-overlay__content h2 {
   margin: 0.2rem 0 0;
-}
-
-.selection-card h2,
-.selection-card p {
-  margin: 0;
-}
-
-.selection-card h2 {
-  margin-top: 0.2rem;
-  font-size: 1.5rem;
-}
-
-.selection-card p:last-child {
-  margin-top: 0.35rem;
-  color: var(--text-muted);
 }
 
 .selection-label {
@@ -680,6 +659,10 @@ button {
     flex-wrap: wrap;
   }
 
+  .village-top-nav {
+    max-width: calc(100vw - 2rem);
+  }
+
   .panel {
     top: auto;
     left: 1rem;
@@ -692,10 +675,6 @@ button {
   .building-legend {
     top: 13.1rem;
     width: calc(100vw - 2rem);
-  }
-
-  .selection-card {
-    bottom: 8rem;
   }
 
   .section-screen__top,
@@ -728,8 +707,8 @@ button {
     top: 16rem;
   }
 
-  .selection-card {
-    bottom: 8rem;
+  .village-top-nav__item {
+    padding: 0.66rem 0.85rem;
   }
 
   .section-stats {

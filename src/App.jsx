@@ -6,7 +6,7 @@ import Contact from './sections/Contact'
 import Home from './sections/Home'
 import Projects from './sections/Projects'
 import Skills from './sections/Skills'
-import { sectionContent } from './portfolioData'
+import { sectionOrder } from './portfolioData'
 
 const sectionScreens = {
   Home,
@@ -52,8 +52,6 @@ export default function App() {
   }
 
   const ActiveScreen = sectionScreens[activeSection]
-  const activeContent = sectionContent[activeSection]
-
   if (currentScreen === 'section') {
     return (
       <ActiveScreen
@@ -75,6 +73,18 @@ export default function App() {
           <p className="hero-subtitle">
             Drag to rotate, scroll to zoom, and click any building to go inside that section.
           </p>
+          <nav className="village-top-nav" aria-label="Village sections">
+            {sectionOrder.map((section) => (
+              <button
+                key={section}
+                type="button"
+                className={section === activeSection ? 'village-top-nav__item active' : 'village-top-nav__item'}
+                onClick={() => setActiveSection(section)}
+              >
+                {section}
+              </button>
+            ))}
+          </nav>
         </div>
         <div className="hero-actions">
           <button
@@ -95,16 +105,8 @@ export default function App() {
         onEnter={handleEnterSection}
         enteringSection={enteringSection}
         theme={theme}
+        showLegend={false}
       />
-
-      <div className="selection-card">
-        <p className="selection-label">{activeContent.label}</p>
-        <h2>{activeContent.title}</h2>
-        <p>{activeContent.subtitle}</p>
-        <button type="button" className="selection-enter-button" onClick={() => handleEnterSection(activeSection)}>
-          Enter {activeSection}
-        </button>
-      </div>
 
       {enteringSection ? (
         <div className="enter-overlay" aria-hidden="true">

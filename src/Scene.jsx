@@ -508,7 +508,7 @@ function Village({ activeSection, onEnter, enteringSection, theme }) {
   )
 }
 
-export default function Scene({ activeSection, onEnter, enteringSection, theme }) {
+export default function Scene({ activeSection, onEnter, enteringSection, theme, showLegend = true }) {
   return (
     <div className="scene-shell">
       <Canvas
@@ -528,13 +528,15 @@ export default function Scene({ activeSection, onEnter, enteringSection, theme }
         <p>Drag to rotate. Scroll to zoom. Click a building to go inside.</p>
         <span>{sectionContent[activeSection]?.label || sectionOrder[0]}</span>
       </div>
-      <div className="building-legend">
-        {sectionOrder.map((section) => (
-          <button key={section} type="button" onClick={() => onEnter(section)}>
-            {section}
-          </button>
-        ))}
-      </div>
+      {showLegend ? (
+        <div className="building-legend">
+          {sectionOrder.map((section) => (
+            <button key={section} type="button" onClick={() => onEnter(section)}>
+              {section}
+            </button>
+          ))}
+        </div>
+      ) : null}
     </div>
   )
 }
